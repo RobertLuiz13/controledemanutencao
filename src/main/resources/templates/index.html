@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8" />
+<title>Sistema para controle de manutenção de equipamentos</title>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">	
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+	<header th:insert="fragments/geral.html :: header"> </header>
+
+	<div class="container my-2">
+		<a th:href="@{/controlemanutencao/consultaos/nova}" class="btn btn-danger mb-3">Cadastra ordem Servico</a>
+        <a th:href="@{/ordemServico/consultaos/nova}" class="btn btn-primary mb-3">Consulta ordemServico</a>
+		<h1>Lista Ordem serviço</h1> 
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Endereço</th>
+					<th>Telefone</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="consultaos : ${listaPessoas.content}">
+					<td th:text="${consultaos.nome}"></td>
+					<td th:text="${consultaos.telefone}"></td>
+					<td th:text="${consultaos.email}"></td>
+				
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+</body>
+</html>
